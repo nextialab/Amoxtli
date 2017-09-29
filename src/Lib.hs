@@ -1,6 +1,12 @@
 module Lib
-    ( someFunc
+    ( readMarkdownFile
     ) where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+import System.IO
+
+readMarkdownFile :: IO ()
+readMarkdownFile = do
+    handle <- openFile "tests.md" ReadMode
+    contents <- hGetContents handle
+    putStr contents
+    hClose handle
